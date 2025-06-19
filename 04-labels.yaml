@@ -3,11 +3,11 @@ apiVersion: v1
 metadata:
   name: labels
   labels:
-    project: expense
-    component: backend
-    environment: dev
+      project: expense
+      component: backend
+      environment: dev
 spec: 
-  container:
+  containers:
   - name: nginx
     image: nginx
     
