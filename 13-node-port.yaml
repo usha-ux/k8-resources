@@ -1,13 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata: 
-  name: nginx
+  name: nginx-np
 spec:
+  type: NodePort
   selector:
     project: expense
     component: backend
     environment: dev
     version: "1.0.0"
+    demo: np
   ports:
   - protocol: TCP
     port: 80
@@ -17,12 +19,13 @@ spec:
 kind: Pod
 apiVersion: v1
 metadata:
-  name: backend
+  name: backend-np
   labels:
     project: expense
     component: backend
     environment: dev
     version: "1.0.0"
+    demo: np
 spec: 
   containers:
   - name: nginx
