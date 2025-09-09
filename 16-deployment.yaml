@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: usha43/deployment:1.0
+        image: usha43/deployment:2.0
         ports:
         - containerPort: 80
 ---
