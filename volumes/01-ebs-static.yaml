@@ -30,7 +30,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: ebs-static
-  namespace: ebs
+  
 spec:
   containers:
   - name: nginx
