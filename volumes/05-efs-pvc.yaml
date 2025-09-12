@@ -10,3 +10,40 @@ spec:
   resources:
     requests:
       storage: 5Gi
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: efs-static
+  labels: 
+    purpose: "efs-satic-demo"
+spec:
+
+  containers:
+  - name: nginx
+    image: nginx
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo $(date -u) >> /data/out.txt; sleep 5; done"]
+    volumeMounts:
+    - name: ebs-static
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: ebs-static
+    persistentVolumeClaim:
+      claimName: efs-static 
+---
+kind: Service
+apiVersion: v1
+metadata: 
+  name: nginx-lb
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: "efs-static-demo"
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 31767 
+          
