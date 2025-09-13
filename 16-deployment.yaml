@@ -14,21 +14,21 @@ spec:
       tier: frontend
       purpose: deployment
   template:
-  metadata: 
+    metadata:
       labels:
         app: nginx
         tier: frontend
         purpose: deployment
-  spec:
+    spec:
       containers:
-      - name: nginx
-        image: usha43/deployment:2.0
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: usha43/deployment:2.0
+          ports:
+            - containerPort: 80
 ---
-kind: Service
 apiVersion: v1
-metadata: 
+kind: Service
+metadata:
   name: nginx
 spec:
   type: LoadBalancer
@@ -36,9 +36,8 @@ spec:
     app: nginx
     tier: frontend
     purpose: deployment
-   
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-    nodePort:31767    
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31767
