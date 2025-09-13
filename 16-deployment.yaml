@@ -14,7 +14,7 @@ spec:
       tier: frontend
       purpose: deployment
   template:
-    metadata:
+    metadata: 
       labels:
         app: nginx
         tier: frontend
